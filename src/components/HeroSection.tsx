@@ -52,7 +52,9 @@ export default function HeroSection() {
             View My Projects
           </a>
           <a
-            href="#contact"
+            href="https://drive.google.com/file/d/1ikHEDfmDKGMtPQDexIk52CpeumRpaP8Y/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 border border-primary text-primary font-mono text-sm font-semibold rounded-md hover:bg-primary/10 transition-all duration-300"
           >
             Download CV

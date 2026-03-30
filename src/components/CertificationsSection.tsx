@@ -21,11 +21,14 @@ export default function CertificationsSection() {
           </h3>
         </motion.div>
 
-        <motion.div
+        <motion.a
+          href="https://drive.google.com/file/d/1aoCQQSNlH53soyfESFcGm1HCcDteZven/view?usp=drivesdk"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="p-6 rounded-lg border border-border bg-card card-hover inline-block"
+          className="block p-6 rounded-lg border border-border bg-card card-hover inline-block"
         >
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-xl border border-border">
@@ -39,7 +42,7 @@ export default function CertificationsSection() {
               </p>
             </div>
           </div>
-        </motion.div>
+        </motion.a>
       </div>
     </section>
   );

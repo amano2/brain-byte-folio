@@ -7,21 +7,21 @@ const projects = [
     description:
       "A comprehensive toolkit for AI explainability and fairness auditing using SHAP, LIME, and custom fairness metrics. Helps developers build transparent and unbiased machine learning models.",
     tags: ["SHAP", "LIME", "Fairness Auditing", "Python", "Explainable AI"],
-    accent: "primary",
+    link: "https://github.com/amano2/responsibleAI",
   },
   {
     title: "Plant Disease Detection",
     description:
       "Deep learning system using MobileNetV2 architecture to identify plant diseases from leaf images. Integrated with a Django backend for real-time prediction via web interface.",
     tags: ["MobileNetV2", "Django", "TensorFlow", "Computer Vision"],
-    accent: "primary",
+    link: "https://github.com/amano2/plant-web",
   },
   {
     title: "Livestock Diagnostics Platform",
     description:
       "An intelligent diagnostic system with a Flask backend serving real-time prediction APIs for livestock health assessment. Enables veterinarians to get instant AI-powered insights.",
     tags: ["Flask", "REST API", "Real-Time ML", "Healthcare AI"],
-    accent: "primary",
+    link: "https://github.com/amano2/krishidost",
   },
 ];
 
@@ -47,12 +47,15 @@ export default function ProjectsSection() {
 
         <div className="space-y-6">
           {projects.map((project, i) => (
-            <motion.div
+            <motion.a
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.15 * (i + 1) }}
-              className="p-6 rounded-lg border border-border bg-card card-hover group cursor-pointer"
+              className="block p-6 rounded-lg border border-border bg-card card-hover group"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="flex items-start justify-between mb-3">
                 <h4 className="text-xl font-body font-bold text-foreground group-hover:text-primary transition-colors">
@@ -75,7 +78,7 @@ export default function ProjectsSection() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
