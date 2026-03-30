@@ -47,7 +47,7 @@ export default function ProjectsSection() {
 
         <div className="space-y-6">
           {projects.map((project, i) => (
-            <motion.div
+            <motion.a
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
