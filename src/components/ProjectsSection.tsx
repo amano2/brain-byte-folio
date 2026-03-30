@@ -52,7 +52,10 @@ export default function ProjectsSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.15 * (i + 1) }}
-              className="p-6 rounded-lg border border-border bg-card card-hover group cursor-pointer"
+              className="block p-6 rounded-lg border border-border bg-card card-hover group"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="flex items-start justify-between mb-3">
                 <h4 className="text-xl font-body font-bold text-foreground group-hover:text-primary transition-colors">
