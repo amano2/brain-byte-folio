@@ -7,21 +7,21 @@ const projects = [
     description:
       "A comprehensive toolkit for AI explainability and fairness auditing using SHAP, LIME, and custom fairness metrics. Helps developers build transparent and unbiased machine learning models.",
     tags: ["SHAP", "LIME", "Fairness Auditing", "Python", "Explainable AI"],
-    accent: "primary",
+    link: "https://github.com/amano2/responsibleAI",
   },
   {
     title: "Plant Disease Detection",
     description:
       "Deep learning system using MobileNetV2 architecture to identify plant diseases from leaf images. Integrated with a Django backend for real-time prediction via web interface.",
     tags: ["MobileNetV2", "Django", "TensorFlow", "Computer Vision"],
-    accent: "primary",
+    link: "https://github.com/amano2/plant-web",
   },
   {
     title: "Livestock Diagnostics Platform",
     description:
       "An intelligent diagnostic system with a Flask backend serving real-time prediction APIs for livestock health assessment. Enables veterinarians to get instant AI-powered insights.",
     tags: ["Flask", "REST API", "Real-Time ML", "Healthcare AI"],
-    accent: "primary",
+    link: "https://github.com/amano2/krishidost",
   },
 ];
 
