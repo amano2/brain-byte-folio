@@ -78,7 +78,7 @@ export default function ProjectsSection() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
