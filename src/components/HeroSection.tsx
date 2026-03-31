@@ -52,7 +52,7 @@ export default function HeroSection() {
             View My Projects
           </a>
           <a
-            href="https://drive.google.com/file/d/1ikHEDfmDKGMtPQDexIk52CpeumRpaP8Y/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1ikHEDfmDKGMtPQDexIk52CpeumRpaP8Y/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 border border-primary text-primary font-mono text-sm font-semibold rounded-md hover:bg-primary/10 transition-all duration-300"
