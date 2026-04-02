@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# brain-byte-folio
 
 TODO: Document your project here
