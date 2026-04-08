@@ -36,7 +36,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto"
         >
-          M.Tech Student in AI & Data Science | Full-Stack ML Developer
+          Specializing in AI & Data Science | M.Tech at KIIT
         </motion.p>
 
         <motion.div
@@ -52,7 +52,7 @@ export default function HeroSection() {
             View My Projects
           </a>
           <a
-            href="https://drive.google.com/file/d/1ikHEDfmDKGMtPQDexIk52CpeumRpaP8Y/view?usp=sharing"
+            href="https://docs.google.com/document/d/11tImHxaCmOKJL9geTI3tuFIyR_sbw9OXD987QWxEKQ8/edit?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 border border-primary text-primary font-mono text-sm font-semibold rounded-md hover:bg-primary/10 transition-all duration-300"

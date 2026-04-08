@@ -36,8 +36,9 @@ export default function AboutSection() {
               real-world problems.
             </p>
             <p>
-              Currently pursuing my M.Tech at KIIT University, I focus on building responsible, 
-              explainable AI systems while maintaining strong software engineering practices.
+              Currently pursuing my M.Tech at Kalinga Institute of Industrial Technology (KIIT), 
+              I focus on building responsible, explainable AI systems while maintaining strong 
+              software engineering practices.
             </p>
           </motion.div>
 
@@ -51,16 +52,16 @@ export default function AboutSection() {
             <div className="p-4 rounded-lg border border-border bg-card card-hover">
               <div className="flex justify-between items-start mb-1">
                 <span className="font-mono text-primary text-xs text-glow">M.Tech — AI & Data Science</span>
-                <span className="font-mono text-xs text-muted-foreground">Current</span>
+                <span className="font-mono text-xs text-muted-foreground">2025 - 27</span>
               </div>
-              <p className="font-body font-semibold text-foreground">KIIT University</p>
+              <p className="font-body font-semibold text-foreground">Kalinga Institute of Industrial Technology</p>
               <p className="font-mono text-sm text-secondary-foreground mt-1">CGPA: 7.38</p>
             </div>
 
             <div className="p-4 rounded-lg border border-border bg-card card-hover">
               <div className="flex justify-between items-start mb-1">
                 <span className="font-mono text-primary text-xs text-glow">B.Tech — Computer Science</span>
-                <span className="font-mono text-xs text-muted-foreground">Completed</span>
+                <span className="font-mono text-xs text-muted-foreground">2021 - 25</span>
               </div>
               <p className="font-body font-semibold text-foreground">Techno India University</p>
               <p className="font-mono text-sm text-secondary-foreground mt-1">CGPA: 7.91</p>

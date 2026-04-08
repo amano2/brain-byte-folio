@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const commands = [
-  { prompt: "aman@dev:~$", command: "cat skills.py", delay: 800 },
-  { prompt: ">>>", command: 'languages = ["Python", "Java", "C++", "JavaScript", "SQL"]', delay: 600 },
-  { prompt: ">>>", command: 'ai_ml = ["PyTorch", "TensorFlow", "Scikit-Learn", "Pandas", "NumPy"]', delay: 600 },
-  { prompt: ">>>", command: 'backend = ["Django", "Flask", "Docker", "Kubernetes"]', delay: 600 },
-  { prompt: ">>>", command: 'print(f"Ready to build the future. 🚀")', delay: 500 },
-  { prompt: "", command: "Ready to build the future. 🚀", delay: 0 },
+  { prompt: "aman@dev:~$", command: "cat tech_stack.py", delay: 800 },
+  { prompt: ">>>", command: 'languages = ["Python", "Java", "C++", "C", "SQL"]', delay: 600 },
+  { prompt: ">>>", command: 'ml_ds = ["PyTorch", "TensorFlow", "Scikit-Learn", "FastAPI"]', delay: 600 },
+  { prompt: ">>>", command: 'devops = ["Docker", "Kubernetes", "CI/CD Pipeline"]', delay: 600 },
+  { prompt: ">>>", command: 'print("Ready to architect intelligence. ")', delay: 500 },
+  { prompt: "", command: "Ready to architect intelligence. ", delay: 0 },
 ];
 
 export default function TerminalWindow() {

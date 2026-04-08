@@ -3,25 +3,25 @@ import { useRef } from "react";
 
 const projects = [
   {
-    title: "Responsible AI Toolkit",
+    title: "Verity: AI-Powered News Verifier",
     description:
-      "A comprehensive toolkit for AI explainability and fairness auditing using SHAP, LIME, and custom fairness metrics. Helps developers build transparent and unbiased machine learning models.",
-    tags: ["SHAP", "LIME", "Fairness Auditing", "Python", "Explainable AI"],
+      "A news verification platform that automates misinformation detection using Google Gemini 2.5 Flash and LangChain. Features a Truth Score algorithm and a bespoke, newspaper-themed UI for professional-grade readability.",
+    tags: ["Gemini 2.5 Flash", "LangChain", "FastAPI", "React.js", "Scraping"],
+    link: "https://github.com/amano2/Verity",
+  },
+  {
+    title: "Responsible AI Suite",
+    description:
+      "A technical suite focused on AI fairness and ethics, featuring a Fairness Lab for auditing demographic gaps and a Constitutional HR AI built with Gemini 2.0 Flash to ensure transparency in hiring.",
+    tags: ["Gemini 2.0 Flash", "RLAIF", "AI Ethics", "Fairness Lab", "Python"],
     link: "https://github.com/amano2/responsibleAI",
   },
   {
     title: "Plant Disease Detection",
     description:
-      "Deep learning system using MobileNetV2 architecture to identify plant diseases from leaf images. Integrated with a Django backend for real-time prediction via web interface.",
-    tags: ["MobileNetV2", "Django", "TensorFlow", "Computer Vision"],
+      "Automated image-based detection system using MobileNetV2 and deep learning to identify plant diseases from leaf images, helping farmers reduce crop loss through timely intervention.",
+    tags: ["Deep Learning", "MobileNetV2", "Django", "Computer Vision", "PlantVillage"],
     link: "https://github.com/amano2/plant-web",
-  },
-  {
-    title: "Livestock Diagnostics Platform",
-    description:
-      "An intelligent diagnostic system with a Flask backend serving real-time prediction APIs for livestock health assessment. Enables veterinarians to get instant AI-powered insights.",
-    tags: ["Flask", "REST API", "Real-Time ML", "Healthcare AI"],
-    link: "https://github.com/amano2/krishidost",
   },
 ];
 
