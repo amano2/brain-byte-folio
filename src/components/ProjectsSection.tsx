@@ -4,24 +4,39 @@ import { useRef } from "react";
 const projects = [
   {
     title: "Verity: AI-Powered News Verifier",
+    subtitle: "Misinformation Detection Platform",
     description:
       "A news verification platform that automates misinformation detection using Google Gemini 2.5 Flash and LangChain. Features a Truth Score algorithm and a bespoke, newspaper-themed UI for professional-grade readability.",
-    tags: ["Gemini 2.5 Flash", "LangChain", "FastAPI", "React.js", "Scraping"],
+    tags: ["Gemini 2.5 Flash", "LangChain", "FastAPI", "React.js", "BeautifulSoup"],
     link: "https://github.com/amano2/Verity",
+    color: "#a855f7",
+    accentBg: "rgba(168,85,247,0.12)",
+    accent: "#c084fc",
+    number: "01",
   },
   {
     title: "Responsible AI Suite",
+    subtitle: "AI Fairness & Ethics Toolkit",
     description:
       "A technical suite focused on AI fairness and ethics, featuring a Fairness Lab for auditing demographic gaps and a Constitutional HR AI built with Gemini 2.0 Flash to ensure transparency in hiring.",
     tags: ["Gemini 2.0 Flash", "RLAIF", "AI Ethics", "Fairness Lab", "Python"],
     link: "https://github.com/amano2/responsibleAI",
+    color: "#06b6d4",
+    accentBg: "rgba(6,182,212,0.12)",
+    accent: "#22d3ee",
+    number: "02",
   },
   {
     title: "Plant Disease Detection",
+    subtitle: "Deep Learning + Django Web App",
     description:
       "Automated image-based detection system using MobileNetV2 and deep learning to identify plant diseases from leaf images, helping farmers reduce crop loss through timely intervention.",
     tags: ["Deep Learning", "MobileNetV2", "Django", "Computer Vision", "PlantVillage"],
     link: "https://github.com/amano2/plant-web",
+    color: "#ec4899",
+    accentBg: "rgba(236,72,153,0.12)",
+    accent: "#f472b6",
+    number: "03",
   },
 ];
 
@@ -30,53 +45,101 @@ export default function ProjectsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-24 px-6" ref={ref}>
-      <div className="max-w-4xl mx-auto">
+    <section id="projects" className="py-24 px-6 relative" ref={ref}>
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none opacity-[0.06]"
+        style={{
+          background: "radial-gradient(circle, #a855f7, #06b6d4, transparent 70%)",
+          filter: "blur(100px)",
+        }}
+      />
+
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
+          className="mb-14"
         >
-          <h2 className="font-mono text-primary text-sm tracking-widest uppercase mb-2 text-glow">
+          <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "#ec4899" }}>
             // Featured Projects
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold font-body">
+            Case{" "}
+            <span className="gradient-text-purple">Studies</span>
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold font-body mb-12">
-            What I've <span className="text-primary">Built</span>
-          </h3>
         </motion.div>
 
         <div className="space-y-6">
           {projects.map((project, i) => (
             <motion.a
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 * (i + 1) }}
-              className="block p-6 rounded-lg border border-border bg-card card-hover group"
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.15 * i }}
+              className="group block rounded-2xl overflow-hidden transition-all duration-300"
+              style={{
+                background: "rgba(255,255,255,0.025)",
+                border: `1px solid rgba(255,255,255,0.06)`,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = `${project.color}55`;
+                (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px ${project.color}18`;
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
             >
-              <div className="flex items-start justify-between mb-3">
-                <h4 className="text-xl font-body font-bold text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </h4>
-                <span className="font-mono text-primary text-xs text-glow opacity-0 group-hover:opacity-100 transition-opacity">
-                  → View
-                </span>
-              </div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
+              <div className="flex flex-col md:flex-row">
+                {/* Left colour panel */}
+                <div
+                  className="md:w-64 p-6 flex flex-col justify-between shrink-0"
+                  style={{ background: project.accentBg }}
+                >
                   <span
-                    key={tag}
-                    className="px-2.5 py-1 rounded text-xs font-mono bg-secondary text-secondary-foreground border border-border"
+                    className="font-mono text-4xl font-bold opacity-30 select-none"
+                    style={{ color: project.color }}
                   >
-                    {tag}
+                    {project.number}
                   </span>
-                ))}
+                  <div className="mt-6 flex flex-wrap gap-1.5">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-mono px-2 py-0.5 rounded-full border"
+                        style={{
+                          borderColor: `${project.color}50`,
+                          color: project.accent,
+                          background: `${project.color}15`,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right content */}
+                <div className="flex-1 p-6 flex flex-col justify-between">
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-widest mb-1" style={{ color: project.accent }}>
+                      {project.subtitle}
+                    </p>
+                    <h3 className="font-body font-bold text-xl text-foreground mb-3 group-hover:text-white transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+                  </div>
+                  <div className="flex items-center gap-2 mt-4">
+                    <span className="text-xs font-mono" style={{ color: project.accent }}>
+                      View on GitHub ↗
+                    </span>
+                  </div>
+                </div>
               </div>
             </motion.a>
           ))}
