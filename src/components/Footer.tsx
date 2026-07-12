@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -125,9 +126,15 @@ export default function Footer() {
           className="mt-16 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2"
           style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
         >
-          <p className="font-mono text-xs text-muted-foreground/50">
-            © {new Date().getFullYear()} Aman Hossain
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <p className="font-mono text-xs text-muted-foreground/50">
+              © {new Date().getFullYear()} Aman Hossain
+            </p>
+            <span className="hidden sm:inline text-muted-foreground/20">|</span>
+            <Link to="/blog" className="font-mono text-xs text-purple-400 hover:text-purple-300 transition-colors">
+              //Read Blog
+            </Link>
+          </div>
           <p className="font-mono text-xs text-muted-foreground/30">
             Built with React · Vite · Framer Motion
           </p>
