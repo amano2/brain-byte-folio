@@ -5,6 +5,10 @@ import Header from "../components/Header";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 
 export default function WriteBlog() {
+  const ADMIN_PASSCODE = "aman2026";
+  const [passcode, setPasscode] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState("");
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [tags, setTags] = useState("");
@@ -12,6 +16,29 @@ export default function WriteBlog() {
   const [date, setDate] = useState("");
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<"edit" | "preview" | "both">("both");
+
+  // Check auth on load
+  useEffect(() => {
+    const isAuthed = localStorage.getItem("portfolio_admin_authed") === "true";
+    setIsAuthenticated(isAuthed);
+  }, []);
+
+  const handleVerifyPasscode = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcode === ADMIN_PASSCODE) {
+      localStorage.setItem("portfolio_admin_authed", "true");
+      setIsAuthenticated(true);
+      setAuthError("");
+    } else {
+      setAuthError("Invalid passcode. Please try again.");
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("portfolio_admin_authed");
+    setIsAuthenticated(false);
+    setPasscode("");
+  };
 
   // Default to today's date
   useEffect(() => {
@@ -68,6 +95,56 @@ export default function WriteBlog() {
     document.body.removeChild(element);
   };
 
+  if (!isAuthenticated) {
+    return (
+      <main className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
+        <Header />
+
+        {/* Ambient background glowing orbs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full opacity-[0.06]"
+            style={{
+              background: "radial-gradient(circle, #a855f7 0%, transparent 70%)",
+              filter: "blur(80px)",
+            }}
+          />
+        </div>
+
+        <div className="max-w-md mx-auto px-6 py-40 w-full flex-1 flex flex-col justify-center relative z-10">
+          <div className="p-8 rounded-2xl border border-white/10 bg-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md">
+            <h2 className="text-xl font-bold font-body text-foreground mb-1 text-center">Admin Access</h2>
+            <p className="text-xs text-muted-foreground text-center mb-6">Enter passcode to unlock the Blog Composer</p>
+
+            <form onSubmit={handleVerifyPasscode} className="space-y-4">
+              <div className="space-y-1">
+                <input
+                  type="password"
+                  placeholder="Enter passcode..."
+                  value={passcode}
+                  onChange={(e) => setPasscode(e.target.value)}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-purple-500/50 transition-all font-mono text-center"
+                />
+              </div>
+
+              {authError && (
+                <p className="text-xs text-red-400 font-mono text-center">{authError}</p>
+              )}
+
+              <button
+                type="submit"
+                className="w-full py-2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:opacity-90 transition-all cursor-pointer font-mono text-xs"
+              >
+                Verify Passcode
+              </button>
+            </form>
+          </div>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
       <Header />
@@ -102,43 +179,59 @@ export default function WriteBlog() {
 
         {/* Dashboard Title */}
         <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/5 pb-4">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest mb-1.5" style={{ color: "#a855f7" }}>
-              // Content Management System
-            </p>
-            <h1 className="text-2xl md:text-3xl font-bold font-body">
-              Blog <span className="gradient-text-purple">Composer</span>
-            </h1>
+          <div className="flex justify-between items-end w-full md:w-auto">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest mb-1.5" style={{ color: "#a855f7" }}>
+                // Content Management System
+              </p>
+              <h1 className="text-2xl md:text-3xl font-bold font-body">
+                Blog <span className="gradient-text-purple">Composer</span>
+              </h1>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="md:hidden px-3 py-1 font-mono text-[10px] rounded border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors"
+            >
+              Lock
+            </button>
           </div>
 
-          {/* View Toggles */}
-          <div className="flex bg-white/5 border border-white/10 rounded-full p-1 self-start font-mono text-xs">
+          <div className="flex items-center gap-4">
+            {/* View Toggles */}
+            <div className="flex bg-white/5 border border-white/10 rounded-full p-1 self-start font-mono text-xs">
+              <button
+                onClick={() => setActiveTab("edit")}
+                className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all cursor-pointer ${
+                  activeTab === "edit" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "text-muted-foreground hover:text-white"
+                }`}
+              >
+                <Edit className="w-3 h-3" />
+                <span>Editor Only</span>
+              </button>
+              <button
+                onClick={() => setActiveTab("both")}
+                className={`hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all cursor-pointer ${
+                  activeTab === "both" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "text-muted-foreground hover:text-white"
+                }`}
+              >
+                <Eye className="w-3 h-3" />
+                <span>Split Pane</span>
+              </button>
+              <button
+                onClick={() => setActiveTab("preview")}
+                className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all cursor-pointer ${
+                  activeTab === "preview" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "text-muted-foreground hover:text-white"
+                }`}
+              >
+                <Eye className="w-3 h-3" />
+                <span>Preview Only</span>
+              </button>
+            </div>
             <button
-              onClick={() => setActiveTab("edit")}
-              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all cursor-pointer ${
-                activeTab === "edit" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "text-muted-foreground hover:text-white"
-              }`}
+              onClick={handleLogout}
+              className="hidden md:block px-3 py-1.5 font-mono text-xs rounded-full border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer"
             >
-              <Edit className="w-3 h-3" />
-              <span>Editor Only</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("both")}
-              className={`hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all cursor-pointer ${
-                activeTab === "both" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "text-muted-foreground hover:text-white"
-              }`}
-            >
-              <Eye className="w-3 h-3" />
-              <span>Split Pane</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("preview")}
-              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all cursor-pointer ${
-                activeTab === "preview" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "text-muted-foreground hover:text-white"
-              }`}
-            >
-              <Eye className="w-3 h-3" />
-              <span>Preview Only</span>
+              Lock Editor
             </button>
           </div>
         </div>

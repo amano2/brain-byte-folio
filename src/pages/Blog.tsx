@@ -19,10 +19,18 @@ interface BlogEntry {
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // Scroll to top on mount
+  // Scroll to top and check admin query param / session
   useEffect(() => {
     window.scrollTo(0, 0);
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("admin") === "true") {
+      localStorage.setItem("portfolio_admin_authed", "true");
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(localStorage.getItem("portfolio_admin_authed") === "true");
+    }
   }, []);
 
   const blogs: BlogEntry[] = blogsData;
@@ -84,12 +92,14 @@ export default function Blog() {
               Thought pieces, engineering diaries, and tutorials covering Machine Learning, Full-Stack Architecture, and Agentic AI systems.
             </p>
           </div>
-          <Link
-            to="/write"
-            className="px-5 py-2 font-mono text-xs rounded-lg border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 transition-all flex items-center gap-1.5 self-start md:self-end cursor-pointer"
-          >
-            <span>+ Write Article</span>
-          </Link>
+          {isAdmin && (
+            <Link
+              to="/write"
+              className="px-5 py-2 font-mono text-xs rounded-lg border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 transition-all flex items-center gap-1.5 self-start md:self-end cursor-pointer"
+            >
+              <span>+ Write Article</span>
+            </Link>
+          )}
         </div>
 
         {/* Filter Controls Row */}
