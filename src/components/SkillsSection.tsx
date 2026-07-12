@@ -1,46 +1,46 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const services = [
+const skillCategories = [
   {
-    icon: "🧠",
-    title: "Machine Learning",
-    desc: "Building and deploying supervised & unsupervised models with PyTorch, TensorFlow, and Scikit-Learn.",
+    icon: "🌐",
+    title: "Languages",
+    skills: ["C", "C++", "Java", "JavaScript", "Python", "SQL"],
     color: "#a855f7",
     border: "rgba(168,85,247,0.3)",
   },
   {
-    icon: "⚖️",
-    title: "Responsible AI",
-    desc: "Fairness auditing, explainability (RLAIF), and Constitutional AI to build ethical, transparent systems.",
+    icon: "📦",
+    title: "Frameworks & Libraries",
+    skills: ["Pandas", "NumPy", "Matplotlib", "ScikitLearn", "Flask", "Django", "Node", "Express"],
     color: "#ec4899",
     border: "rgba(236,72,153,0.3)",
   },
   {
-    icon: "🌐",
-    title: "Full-Stack Dev",
-    desc: "End-to-end web apps using Django, FastAPI, React, and Node.js with CI/CD pipeline integration.",
+    icon: "⚙️",
+    title: "Tools & Databases",
+    skills: ["Excel", "PowerPoint", "MySQL", "Postman", "PyTorch", "TensorFlow", "Docker", "Kubernetes", "Firebase"],
     color: "#06b6d4",
     border: "rgba(6,182,212,0.3)",
   },
   {
-    icon: "📊",
-    title: "Data Science",
-    desc: "Data wrangling, visualization, and analysis with Pandas, NumPy, and Matplotlib for actionable insights.",
+    icon: "🖥️",
+    title: "Platforms",
+    skills: ["Jupyter Notebook", "VS Code", "IntelliJ IDEA", "MySQL Workbench", "Google Colab", "Docker Desktop"],
     color: "#6366f1",
     border: "rgba(99,102,241,0.3)",
   },
   {
-    icon: "🐳",
-    title: "DevOps & Cloud",
-    desc: "Containerization with Docker and Kubernetes, CI/CD pipelines, and automated deployments.",
+    icon: "🧠",
+    title: "Industry Knowledge",
+    skills: ["Data Structures & Algorithms (DSA)", "Machine Learning", "Data Science", "Deep Learning", "GenAI", "LLMs", "Agentic AI", "Web Development (Flask & Django)", "DevOps", "CI/CD Pipeline"],
     color: "#14b8a6",
     border: "rgba(20,184,166,0.3)",
   },
   {
-    icon: "🔬",
-    title: "Deep Learning",
-    desc: "CNN architectures (MobileNetV2), transfer learning, and computer vision for real-world detection tasks.",
+    icon: "🤝",
+    title: "Soft Skills",
+    skills: ["Time Management", "Organization", "Leadership", "Teamwork", "Problem Solving"],
     color: "#f59e0b",
     border: "rgba(245,158,11,0.3)",
   },
@@ -78,13 +78,13 @@ export default function SkillsSection() {
         </motion.div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {services.map((svc, i) => (
+          {skillCategories.map((svc, i) => (
             <motion.div
               key={svc.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.08 * i }}
-              className="service-card p-6 rounded-2xl transition-all duration-300 cursor-default group"
+              className="service-card p-6 rounded-2xl transition-all duration-300 cursor-default group flex flex-col justify-between"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 border: `1px solid ${svc.border}`,
@@ -100,14 +100,30 @@ export default function SkillsSection() {
                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
               }}
             >
-              <div
-                className="service-icon w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 transition-all duration-300"
-                style={{ background: `${svc.color}18` }}
-              >
-                {svc.icon}
+              <div>
+                <div
+                  className="service-icon w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 transition-all duration-300"
+                  style={{ background: `${svc.color}18` }}
+                >
+                  {svc.icon}
+                </div>
+                <h3 className="font-body font-bold text-foreground mb-3 text-base">{svc.title}</h3>
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                  {svc.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="text-[10px] font-mono px-2 py-0.5 rounded-full border transition-all duration-300"
+                      style={{
+                        borderColor: `${svc.color}35`,
+                        color: `${svc.color}dd`,
+                        background: `${svc.color}08`,
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h3 className="font-body font-bold text-foreground mb-2 text-base">{svc.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{svc.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -119,7 +135,7 @@ export default function SkillsSection() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-10 flex flex-wrap gap-2"
         >
-          {["Python", "Java", "C++", "C", "JavaScript", "SQL", "FastAPI", "Django", "Docker", "Kubernetes", "PyTorch", "TensorFlow", "Pandas", "NumPy", "Matplotlib"].map((skill) => (
+          {["Python", "LangGraph", "FastAPI", "React", "Django", "PyTorch", "TensorFlow", "Docker", "Kubernetes", "ChromaDB", "SQLite", "ScikitLearn", "SQL", "JavaScript", "Java", "C++"].map((skill) => (
             <span
               key={skill}
               className="px-3 py-1 rounded-full text-xs font-mono border"

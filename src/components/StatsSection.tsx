@@ -2,10 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const stats = [
-  { value: 3, suffix: "+", label: "Projects Shipped", color: "#a855f7", icon: "🚀" },
-  { value: 2, suffix: "", label: "Certifications", color: "#06b6d4", icon: "🏅" },
+  { value: 3, suffix: "", label: "Projects Shipped", color: "#a855f7", icon: "🚀" },
+  { value: 1, suffix: "", label: "Certification", color: "#06b6d4", icon: "🏅" },
+  { value: 7.76, suffix: "", label: "M.Tech CGPA", color: "#6366f1", icon: "🎓" },
   { value: 7.91, suffix: "", label: "B.Tech CGPA", color: "#ec4899", icon: "🎓" },
-  { value: 5, suffix: "+", label: "Tech Stacks", color: "#6366f1", icon: "⚙️" },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {

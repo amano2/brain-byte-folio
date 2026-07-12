@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 
 const commands = [
   { prompt: "aman@dev:~$", command: "cat tech_stack.py", delay: 800 },
-  { prompt: ">>>", command: 'languages = ["Python", "Java", "C++", "C", "SQL"]', delay: 600 },
-  { prompt: ">>>", command: 'ml_ds = ["PyTorch", "TensorFlow", "Scikit-Learn", "FastAPI"]', delay: 600 },
+  { prompt: ">>>", command: 'languages = ["C", "C++", "Java", "JavaScript", "Python", "SQL"]', delay: 600 },
+  { prompt: ">>>", command: 'frameworks = ["Pandas", "NumPy", "Flask", "Django", "Node", "Express"]', delay: 600 },
+  { prompt: ">>>", command: 'ml_ai = ["PyTorch", "TensorFlow", "LangGraph", "FastAPI", "ChromaDB"]', delay: 600 },
   { prompt: ">>>", command: 'devops = ["Docker", "Kubernetes", "CI/CD Pipeline"]', delay: 600 },
   { prompt: ">>>", command: 'print("Ready to architect intelligence. ")', delay: 500 },
   { prompt: "", command: "Ready to architect intelligence. ", delay: 0 },

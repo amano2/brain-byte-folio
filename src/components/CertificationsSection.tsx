@@ -23,7 +23,7 @@ export default function CertificationsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="flex justify-center">
           {/* Design Thinking */}
           <motion.a
             href="https://drive.google.com/file/d/1E7JlWh6J-lvtzN32NXO8KL_2kAISTMKB/view?usp=sharing"
@@ -32,7 +32,7 @@ export default function CertificationsSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="group p-6 rounded-2xl block transition-all duration-300"
+            className="group p-6 rounded-2xl block transition-all duration-300 max-w-2xl w-full"
             style={{
               background: "rgba(168,85,247,0.07)",
               border: "1px solid rgba(168,85,247,0.25)",
@@ -64,57 +64,11 @@ export default function CertificationsSection() {
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed mb-4">
               Mastered human-centered design methodologies and systematic innovation frameworks
-              under senior faculty guidance.
+              under the guidance of senior faculty from the School of Design.
             </p>
             <div className="flex justify-between items-center">
               <span className="font-mono text-[10px] text-muted-foreground">ID: LTBJP78F3DON</span>
               <span className="font-mono text-[10px]" style={{ color: "#c084fc" }}>Feb 26 - Apr 26 ↗</span>
-            </div>
-          </motion.a>
-
-          {/* SAP */}
-          <motion.a
-            href="https://drive.google.com/file/d/1aoCQQSNlH53soyfESFcGm1HCcDteZven/view?usp=drivesdk"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="group p-6 rounded-2xl block transition-all duration-300"
-            style={{
-              background: "rgba(6,182,212,0.07)",
-              border: "1px solid rgba(6,182,212,0.25)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(6,182,212,0.6)";
-              (e.currentTarget as HTMLElement).style.background = "rgba(6,182,212,0.12)";
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 0 24px rgba(6,182,212,0.15)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(6,182,212,0.25)";
-              (e.currentTarget as HTMLElement).style.background = "rgba(6,182,212,0.07)";
-              (e.currentTarget as HTMLElement).style.boxShadow = "none";
-            }}
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-xl"
-                style={{ background: "rgba(6,182,212,0.2)", border: "1px solid rgba(6,182,212,0.4)" }}
-              >
-                🏅
-              </div>
-              <div>
-                <h4 className="font-body font-bold text-foreground group-hover:text-white transition-colors">
-                  SAP S/4HANA
-                </h4>
-                <p className="font-mono text-xs text-muted-foreground mt-0.5">Enterprise Software</p>
-              </div>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Demonstrates versatility across AI/ML and enterprise systems for large-scale operations.
-            </p>
-            <div className="flex justify-end mt-4">
-              <span className="font-mono text-[10px]" style={{ color: "#22d3ee" }}>View Certificate ↗</span>
             </div>
           </motion.a>
         </div>

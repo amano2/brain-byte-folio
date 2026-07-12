@@ -62,7 +62,8 @@ export default function AboutSection() {
                 <span className="font-mono text-xs text-muted-foreground">2025 - 27</span>
               </div>
               <p className="font-body font-semibold text-foreground text-sm">Kalinga Institute of Industrial Technology</p>
-              <p className="font-mono text-xs text-muted-foreground mt-1">CGPA: 7.38</p>
+              <p className="text-[11px] text-muted-foreground mt-0.5">Co-Branded in collaboration with LTI Mindtree and L&T EduTech</p>
+              <p className="font-mono text-xs text-muted-foreground mt-1">CGPA: 7.76</p>
             </div>
 
             <div

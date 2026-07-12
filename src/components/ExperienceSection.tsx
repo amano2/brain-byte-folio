@@ -3,19 +3,19 @@ import { useRef } from "react";
 
 const experiences = [
   {
-    title: "M.Tech — AI & Data Science",
-    org: "Kalinga Institute of Industrial Technology (KIIT)",
-    period: "2025 — 2027",
-    detail: "Co-Branded with LTI Mindtree and L&T EduTech",
-    cgpa: "CGPA: 7.38",
+    title: "M.Tech in AI & Data Science",
+    org: "Kalinga Institute of Industrial Technology | Bhubaneswar, Odisha",
+    period: "2025 - 2027",
+    detail: "Co-Branded in collaboration with LTI Mindtree and L&T EduTech",
+    cgpa: "CGPA: 7.76",
     color: "#a855f7",
     icon: "🎓",
   },
   {
-    title: "B.Tech — Computer Science & Engineering",
-    org: "Techno India University, Kolkata",
-    period: "2021 — 2025",
-    detail: "Core CS curriculum with specialization in software engineering",
+    title: "B.Tech. Computer Science and Engineering",
+    org: "Techno India University | Kolkata, India",
+    period: "2021 - 2025",
+    detail: "B.Tech. Computer Science and Engineering core curriculum",
     cgpa: "CGPA: 7.91",
     color: "#06b6d4",
     icon: "🎓",
@@ -23,7 +23,7 @@ const experiences = [
   {
     title: "Design Thinking and Innovation",
     org: "IIT Bombay via Coursera",
-    period: "Feb 2026 — Apr 2026",
+    period: "Feb 2026 - Apr 2026",
     detail: "Credential ID: LTBJP78F3DON",
     cgpa: "Certified",
     color: "#ec4899",
