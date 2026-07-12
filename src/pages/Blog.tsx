@@ -72,16 +72,24 @@ export default function Blog() {
         </Link>
 
         {/* Headline */}
-        <div className="mb-12">
-          <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "#a855f7" }}>
-            // Journals & Insights
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold font-body">
-            Technical <span className="gradient-text-purple">Writing</span>
-          </h1>
-          <p className="text-muted-foreground mt-3 text-sm md:text-base max-w-xl">
-            Thought pieces, engineering diaries, and tutorials covering Machine Learning, Full-Stack Architecture, and Agentic AI systems.
-          </p>
+        <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "#a855f7" }}>
+              // Journals & Insights
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold font-body">
+              Technical <span className="gradient-text-purple">Writing</span>
+            </h1>
+            <p className="text-muted-foreground mt-3 text-sm md:text-base max-w-xl">
+              Thought pieces, engineering diaries, and tutorials covering Machine Learning, Full-Stack Architecture, and Agentic AI systems.
+            </p>
+          </div>
+          <Link
+            to="/write"
+            className="px-5 py-2 font-mono text-xs rounded-lg border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 transition-all flex items-center gap-1.5 self-start md:self-end cursor-pointer"
+          >
+            <span>+ Write Article</span>
+          </Link>
         </div>
 
         {/* Filter Controls Row */}
