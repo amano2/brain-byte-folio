@@ -2,86 +2,139 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Maximize2 } from "lucide-react";
 
-interface CodeLine {
-  label: string;
-  items: { text: string; color: string }[];
+interface Token {
+  text: string;
+  color: string;
+}
+
+interface LineConfig {
+  prefix?: { text: string; color: string }[];
+  tokens: Token[];
   isPrint?: boolean;
 }
 
-const lines: CodeLine[] = [
+const script: LineConfig[] = [
   {
-    label: "languages = [",
-    items: [
+    prefix: [
+      { text: "aman@kiit", color: "#c57aff" },
+      { text: ":", color: "#6b7280" },
+      { text: "~", color: "#00dcb7" },
+      { text: "$ ", color: "#6b7280" },
+    ],
+    tokens: [{ text: "cat tech_stack.py", color: "#ffffff" }],
+  },
+  {
+    tokens: [
+      { text: "languages = [", color: "#9ca3af" },
       { text: '"Python"', color: "#f17bbf" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"TypeScript"', color: "#f17bbf" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"C++"', color: "#f17bbf" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"SQL"', color: "#f17bbf" },
+      { text: "]", color: "#9ca3af" },
     ],
   },
   {
-    label: "frameworks = [",
-    items: [
+    tokens: [
+      { text: "frameworks = [", color: "#9ca3af" },
       { text: '"React"', color: "#00dcb7" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"FastAPI"', color: "#00dcb7" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"Django"', color: "#00dcb7" },
+      { text: "]", color: "#9ca3af" },
     ],
   },
   {
-    label: "ml_tools = [",
-    items: [
+    tokens: [
+      { text: "ml_tools = [", color: "#9ca3af" },
       { text: '"PyTorch"', color: "#c57aff" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"LangGraph"', color: "#c57aff" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"TensorFlow"', color: "#c57aff" },
+      { text: "]", color: "#9ca3af" },
     ],
   },
   {
-    label: "devops = [",
-    items: [
+    tokens: [
+      { text: "devops = [", color: "#9ca3af" },
       { text: '"Docker"', color: "#efa810" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"Firebase"', color: "#efa810" },
+      { text: ", ", color: "#9ca3af" },
       { text: '"Kubernetes"', color: "#efa810" },
+      { text: "]", color: "#9ca3af" },
     ],
   },
   {
-    label: 'print("Ready to architect intelligence.")',
-    items: [],
     isPrint: true,
+    tokens: [
+      { text: "print", color: "#00dcb7" },
+      { text: "(", color: "#9ca3af" },
+      { text: '"Ready to architect intelligence."', color: "#00dcb7" },
+      { text: ")", color: "#9ca3af" },
+    ],
   },
 ];
 
+// Utility to render typed tokens up to a character limit
+function renderTokens(tokens: Token[], maxChars: number) {
+  let charsLeft = maxChars;
+  const elements = [];
+
+  for (let i = 0; i < tokens.length; i++) {
+    if (charsLeft <= 0) break;
+    const token = tokens[i];
+    const take = Math.min(charsLeft, token.text.length);
+    const visibleText = token.text.slice(0, take);
+    elements.push(
+      <span key={i} style={{ color: token.color }}>
+        {visibleText}
+      </span>
+    );
+    charsLeft -= take;
+  }
+
+  return elements;
+}
+
+function getLineLength(tokens: Token[]) {
+  return tokens.reduce((acc, t) => acc + t.text.length, 0);
+}
+
 export default function TerminalWindow() {
-  const promptCommand = "cat tech_stack.py";
-  const [typedPrompt, setTypedPrompt] = useState("");
-  const [activeLineIndex, setActiveLineIndex] = useState(-1);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [typedChars, setTypedChars] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
-  // Step 1: Type the prompt command
   useEffect(() => {
-    let currentIdx = 0;
-    const interval = setInterval(() => {
-      if (currentIdx <= promptCommand.length) {
-        setTypedPrompt(promptCommand.slice(0, currentIdx));
-        currentIdx++;
-      } else {
-        clearInterval(interval);
-        // Start revealing code lines after brief delay
-        setTimeout(() => {
-          setActiveLineIndex(0);
-        }, 400);
-      }
-    }, 60);
+    if (currentLine >= script.length) {
+      setIsComplete(true);
+      return;
+    }
 
-    return () => clearInterval(interval);
-  }, []);
+    const targetLength = getLineLength(script[currentLine].tokens);
 
-  // Step 2: Sequentially reveal lines
-  useEffect(() => {
-    if (activeLineIndex >= 0 && activeLineIndex < lines.length - 1) {
+    if (typedChars < targetLength) {
+      // Type each character with natural typing speed
+      const speed = currentLine === 0 ? 45 : 25;
       const timer = setTimeout(() => {
-        setActiveLineIndex((prev) => prev + 1);
-      }, 350);
+        setTypedChars((c) => c + 1);
+      }, speed);
+      return () => clearTimeout(timer);
+    } else {
+      // Pause at the end of the line before moving to the next
+      const lineDelay = currentLine === 0 ? 350 : currentLine === script.length - 2 ? 300 : 180;
+      const timer = setTimeout(() => {
+        setCurrentLine((l) => l + 1);
+        setTypedChars(0);
+      }, lineDelay);
       return () => clearTimeout(timer);
     }
-  }, [activeLineIndex]);
+  }, [currentLine, typedChars]);
 
   return (
     <motion.div
@@ -118,80 +171,47 @@ export default function TerminalWindow() {
         </div>
 
         {/* Terminal body */}
-        <div className="p-6 font-mono text-xs sm:text-sm leading-7 select-none space-y-1">
-          {/* Prompt line */}
-          <div className="flex items-center flex-wrap">
-            <span style={{ color: "#c57aff" }}>aman@kiit</span>
-            <span className="text-muted-foreground">:</span>
-            <span style={{ color: "#00dcb7" }}>~</span>
-            <span className="text-muted-foreground">$ </span>
-            <span className="text-white ml-2">{typedPrompt}</span>
-            {activeLineIndex === -1 && (
-              <span
-                className="inline-block w-2 h-4 ml-1 align-middle animate-pulse"
-                style={{ background: "#00dcb7" }}
-              />
-            )}
-          </div>
+        <div className="p-6 font-mono text-xs sm:text-sm leading-7 select-none min-h-[260px]">
+          {script.map((line, lineIdx) => {
+            // If this line hasn't started typing yet, don't render it
+            if (lineIdx > currentLine) return null;
 
-          {/* Sequential lines animation */}
-          {activeLineIndex >= 0 && (
-            <div className="space-y-1 pt-3">
-              {lines.slice(0, activeLineIndex + 1).map((line, idx) => {
-                if (line.isPrint) {
-                  return (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -6 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="pt-3 flex items-center"
-                    >
-                      <span style={{ color: "#00dcb7" }}>print</span>
-                      <span className="text-muted-foreground">(</span>
-                      <span style={{ color: "#00dcb7" }}>
-                        "Ready to architect intelligence."
-                      </span>
-                      <span className="text-muted-foreground">)</span>
-                      {idx === activeLineIndex && (
-                        <span
-                          className="inline-block w-2 h-4 ml-1.5 align-middle animate-pulse"
-                          style={{ background: "#00dcb7" }}
-                        />
-                      )}
-                    </motion.div>
-                  );
-                }
+            const isCurrentLine = lineIdx === currentLine;
+            const lineChars = isCurrentLine
+              ? typedChars
+              : getLineLength(line.tokens);
 
-                return (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -6 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex items-center flex-wrap"
-                  >
-                    <span className="text-muted-foreground">{line.label}</span>
-                    {line.items.map((item, itemIdx) => (
-                      <span key={itemIdx} className="inline-flex items-center">
-                        <span style={{ color: item.color }}>{item.text}</span>
-                        {itemIdx < line.items.length - 1 && (
-                          <span className="text-muted-foreground mr-1.5">,</span>
-                        )}
+            return (
+              <div
+                key={lineIdx}
+                className={`flex items-center flex-wrap ${
+                  line.isPrint ? "pt-3" : lineIdx === 1 ? "pt-2" : "pt-0.5"
+                }`}
+              >
+                {/* Prefix (e.g. aman@kiit:~$ ) */}
+                {line.prefix && (
+                  <span className="mr-2 inline-flex items-center">
+                    {line.prefix.map((p, pIdx) => (
+                      <span key={pIdx} style={{ color: p.color }}>
+                        {p.text}
                       </span>
                     ))}
-                    <span className="text-muted-foreground">]</span>
-                    {idx === activeLineIndex && activeLineIndex < lines.length - 1 && (
-                      <span
-                        className="inline-block w-2 h-4 ml-1.5 align-middle animate-pulse"
-                        style={{ background: "#00dcb7" }}
-                      />
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
-          )}
+                  </span>
+                )}
+
+                {/* Render typed tokens */}
+                {renderTokens(line.tokens, lineChars)}
+
+                {/* Blinking cursor on active line or at the very end */}
+                {(isCurrentLine || (isComplete && lineIdx === script.length - 1)) && (
+                  <span
+                    className="inline-block w-2 h-4 ml-1 align-middle animate-pulse"
+                    style={{ background: "#00dcb7" }}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </motion.div>
