@@ -3,47 +3,41 @@ import { useRef } from "react";
 
 const skillCategories = [
   {
-    icon: "🌐",
     title: "Languages",
     skills: ["C", "C++", "Java", "JavaScript", "Python", "SQL"],
-    color: "#a855f7",
-    border: "rgba(168,85,247,0.3)",
+    color: "#c750fd", // Sampled purple
   },
   {
-    icon: "📦",
     title: "Frameworks & Libraries",
-    skills: ["Pandas", "NumPy", "Matplotlib", "ScikitLearn", "Flask", "Django", "Node", "Express"],
-    color: "#ec4899",
-    border: "rgba(236,72,153,0.3)",
+    skills: ["Pandas", "NumPy", "Flask", "Django", "Node", "Express"],
+    color: "#ff45c1", // Sampled pink
   },
   {
-    icon: "⚙️",
     title: "Tools & Databases",
-    skills: ["Excel", "PowerPoint", "MySQL", "Postman", "PyTorch", "TensorFlow", "Docker", "Kubernetes", "Firebase"],
-    color: "#06b6d4",
-    border: "rgba(6,182,212,0.3)",
+    skills: ["MySQL", "Docker", "Kubernetes", "PyTorch", "TensorFlow", "Firebase"],
+    color: "#00d7d9", // Sampled cyan
   },
   {
-    icon: "🖥️",
     title: "Platforms",
-    skills: ["Jupyter Notebook", "VS Code", "IntelliJ IDEA", "MySQL Workbench", "Google Colab", "Docker Desktop"],
-    color: "#6366f1",
-    border: "rgba(99,102,241,0.3)",
+    skills: ["Jupyter", "VS Code", "Google Colab", "Docker Desktop"],
+    color: "#818cf8", // Sampled indigo
   },
   {
-    icon: "🧠",
     title: "Industry Knowledge",
-    skills: ["Data Structures & Algorithms (DSA)", "Machine Learning", "Data Science", "Deep Learning", "GenAI", "LLMs", "Agentic AI", "Web Development (Flask & Django)", "DevOps", "CI/CD Pipeline"],
-    color: "#14b8a6",
-    border: "rgba(20,184,166,0.3)",
+    skills: ["ML", "Deep Learning", "GenAI", "LLMs", "Agentic AI", "DevOps"],
+    color: "#00cca7", // Sampled teal
   },
   {
-    icon: "🤝",
     title: "Soft Skills",
-    skills: ["Time Management", "Organization", "Leadership", "Teamwork", "Problem Solving"],
-    color: "#f59e0b",
-    border: "rgba(245,158,11,0.3)",
+    skills: ["Leadership", "Teamwork", "Problem Solving"],
+    color: "#efa810", // Sampled amber
   },
+];
+
+const allTechTags = [
+  "Python", "PyTorch", "TensorFlow", "LangGraph", "FastAPI", "React",
+  "Django", "Docker", "Kubernetes", "SQL", "GenAI", "LLMs",
+  "Pandas", "NumPy", "Firebase", "Git",
 ];
 
 export default function SkillsSection() {
@@ -52,100 +46,124 @@ export default function SkillsSection() {
 
   return (
     <section id="skills" className="py-24 px-6 relative" ref={ref}>
-      {/* Subtle background orb */}
-      <div
-        className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none opacity-10"
-        style={{
-          background: "radial-gradient(circle, #a855f7, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-
       <div className="max-w-5xl mx-auto">
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "#a855f7" }}>
-            // What I'm Offering
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold font-body">
-            Skills &{" "}
-            <span className="gradient-text-purple">Expertise</span>
-          </h2>
+          {/* Label */}
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-2 h-2 rounded-full bg-green-400" />
+            <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#22c55e" }}>
+              02 / Expertise
+            </span>
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+            <h2 className="text-4xl md:text-5xl font-bold font-body tracking-tight">
+              Skills &amp;
+              <span
+                className="ml-1.5"
+                style={{
+                  background: "linear-gradient(135deg, #c084fc 0%, #818cf8 50%, #38bdf8 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                tools
+              </span>
+            </h2>
+            <p className="text-xs text-muted-foreground font-mono md:text-right max-w-xs leading-relaxed">
+              A practical toolkit for building intelligent systems, polished
+              products, and everything in between.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {skillCategories.map((svc, i) => (
+        {/* Skill cards grid */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+          {skillCategories.map((cat, i) => (
             <motion.div
-              key={svc.title}
-              initial={{ opacity: 0, y: 30 }}
+              key={cat.title}
+              initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.08 * i }}
-              className="service-card p-6 rounded-2xl transition-all duration-300 cursor-default group flex flex-col justify-between"
+              transition={{ duration: 0.5, delay: 0.07 * i }}
+              className="p-5 rounded-2xl transition-all duration-300"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: `1px solid ${svc.border}`,
+                background: "rgba(255,255,255,0.025)",
+                border: "1px solid rgba(255,255,255,0.07)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = `rgba(${svc.color === "#a855f7" ? "168,85,247" : svc.color === "#ec4899" ? "236,72,153" : svc.color === "#06b6d4" ? "6,182,212" : svc.color === "#6366f1" ? "99,102,241" : svc.color === "#14b8a6" ? "20,184,166" : "245,158,11"},0.08)`;
-                (e.currentTarget as HTMLElement).style.borderColor = svc.color;
-                (e.currentTarget as HTMLElement).style.boxShadow = `0 0 24px ${svc.color}22`;
+                (e.currentTarget as HTMLElement).style.borderColor = `${cat.color}45`;
+                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)";
-                (e.currentTarget as HTMLElement).style.borderColor = svc.border;
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.025)";
               }}
             >
-              <div>
-                <div
-                  className="service-icon w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 transition-all duration-300"
-                  style={{ background: `${svc.color}18` }}
-                >
-                  {svc.icon}
-                </div>
-                <h3 className="font-body font-bold text-foreground mb-3 text-base">{svc.title}</h3>
-                <div className="flex flex-wrap gap-1.5 mt-2">
-                  {svc.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded-full border transition-all duration-300"
-                      style={{
-                        borderColor: `${svc.color}35`,
-                        color: `${svc.color}dd`,
-                        background: `${svc.color}08`,
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              {/* Card title with colored bullet */}
+              <div className="flex items-center gap-2.5 mb-4">
+                <span
+                  className="w-2 h-2 rounded-full shrink-0"
+                  style={{ background: cat.color, boxShadow: `0 0 8px ${cat.color}60` }}
+                />
+                <h3 className="font-body font-bold text-foreground text-sm tracking-tight">
+                  {cat.title}
+                </h3>
+              </div>
+
+              {/* Skill tags — monospace single-quoted */}
+              <div className="flex flex-wrap gap-1.5">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="font-mono text-[10px] px-2.5 py-1 rounded-md"
+                    style={{
+                      background: `${cat.color}10`,
+                      border: `1px solid ${cat.color}25`,
+                      color: `${cat.color}ee`,
+                    }}
+                  >
+                    '{skill}'
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Language tags row */}
+        {/* Divider */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.55 }}
+          className="border-t mb-6"
+          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        />
+
+        {/* Flat tech tag row */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-10 flex flex-wrap gap-2"
+          className="flex flex-wrap gap-2"
         >
-          {["Python", "LangGraph", "FastAPI", "React", "Django", "PyTorch", "TensorFlow", "Docker", "Kubernetes", "ChromaDB", "SQLite", "ScikitLearn", "SQL", "JavaScript", "Java", "C++"].map((skill) => (
+          {allTechTags.map((tag) => (
             <span
-              key={skill}
-              className="px-3 py-1 rounded-full text-xs font-mono border"
+              key={tag}
+              className="font-mono text-[10px] px-2.5 py-1 rounded-full border"
               style={{
-                background: "rgba(168,85,247,0.07)",
-                borderColor: "rgba(168,85,247,0.25)",
-                color: "#c084fc",
+                background: "rgba(255,255,255,0.03)",
+                borderColor: "rgba(255,255,255,0.1)",
+                color: "#6b7280",
               }}
             >
-              {skill}
+              '{tag}'
             </span>
           ))}
         </motion.div>

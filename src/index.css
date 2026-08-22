@@ -6,50 +6,52 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 140 60% 90%;
+    /* Pure dark theme matching reference images */
+    --background: 220 18% 3.5%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 18% 7%;
-    --card-foreground: 140 60% 90%;
+    --card: 220 15% 6%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 18% 7%;
-    --popover-foreground: 140 60% 90%;
+    --popover: 220 15% 6%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 140 100% 50%;
-    --primary-foreground: 220 20% 4%;
+    /* Exact sampled emerald green from images (#00c259 / #1de66f) */
+    --primary: 147 100% 38%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 140 40% 75%;
+    --secondary: 220 12% 10%;
+    --secondary-foreground: 0 0% 70%;
 
-    --muted: 220 15% 10%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 220 12% 8%;
+    --muted-foreground: 220 5% 55%;
 
-    --accent: 280 100% 65%;
+    --accent: 280 95% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 140 30% 15%;
-    --input: 220 15% 12%;
-    --ring: 140 100% 50%;
+    --border: 220 10% 12%;
+    --input: 220 12% 10%;
+    --ring: 147 100% 38%;
 
     --radius: 0.5rem;
 
-    --terminal-green: 140 100% 50%;
-    --terminal-dim: 140 40% 30%;
-    --terminal-glow: 0 0 20px hsl(140 100% 50% / 0.3);
-    --terminal-glow-strong: 0 0 40px hsl(140 100% 50% / 0.15), 0 0 80px hsl(140 100% 50% / 0.05);
-    --cyber-purple: 280 100% 65%;
+    --terminal-green: 147 100% 38%;
+    --terminal-dim: 147 40% 28%;
+    --terminal-glow: 0 0 20px rgba(0, 194, 89, 0.3);
+    --terminal-glow-strong: 0 0 40px rgba(0, 194, 89, 0.2), 0 0 80px rgba(0, 194, 89, 0.08);
+    --cyber-purple: 280 95% 65%;
 
-    --sidebar-background: 220 20% 4%;
-    --sidebar-foreground: 140 60% 90%;
-    --sidebar-primary: 140 100% 50%;
-    --sidebar-primary-foreground: 220 20% 4%;
-    --sidebar-accent: 220 15% 12%;
-    --sidebar-accent-foreground: 140 60% 90%;
-    --sidebar-border: 140 30% 15%;
-    --sidebar-ring: 140 100% 50%;
+    --sidebar-background: 220 18% 3.5%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 147 100% 38%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 220 12% 10%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 220 10% 12%;
+    --sidebar-ring: 147 100% 38%;
   }
 }
 
@@ -72,38 +74,38 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(220 20% 4%);
+    background: hsl(0 0% 4%);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(140 30% 15%);
+    background: hsl(0 0% 14%);
     border-radius: 3px;
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px hsl(140 100% 50% / 0.5), 0 0 20px hsl(140 100% 50% / 0.2);
+    text-shadow: 0 0 10px hsl(142 71% 45% / 0.5), 0 0 20px hsl(142 71% 45% / 0.2);
   }
   .text-glow-strong {
-    text-shadow: 0 0 15px hsl(140 100% 50% / 0.7), 0 0 30px hsl(140 100% 50% / 0.3), 0 0 60px hsl(140 100% 50% / 0.1);
+    text-shadow: 0 0 15px hsl(142 71% 45% / 0.7), 0 0 30px hsl(142 71% 45% / 0.3), 0 0 60px hsl(142 71% 45% / 0.1);
   }
   .border-glow {
-    box-shadow: 0 0 10px hsl(140 100% 50% / 0.1), inset 0 0 10px hsl(140 100% 50% / 0.05);
+    box-shadow: 0 0 10px hsl(142 71% 45% / 0.1), inset 0 0 10px hsl(142 71% 45% / 0.05);
   }
   .card-hover {
     @apply transition-all duration-300;
   }
   .card-hover:hover {
-    box-shadow: 0 0 20px hsl(140 100% 50% / 0.15), 0 0 40px hsl(140 100% 50% / 0.05);
-    border-color: hsl(140 100% 50% / 0.4);
+    box-shadow: 0 0 20px hsl(142 71% 45% / 0.15), 0 0 40px hsl(142 71% 45% / 0.05);
+    border-color: hsl(142 71% 45% / 0.4);
   }
   .scanline {
     background: repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      hsl(140 100% 50% / 0.02) 2px,
-      hsl(140 100% 50% / 0.02) 4px
+      hsl(142 71% 45% / 0.02) 2px,
+      hsl(142 71% 45% / 0.02) 4px
     );
   }
 
@@ -116,19 +118,26 @@
   }
 
   @keyframes typing-cursor {
-    0%, 100% { border-color: hsl(140 100% 50%); }
+    0%, 100% { border-color: hsl(142 71% 45%); }
     50% { border-color: transparent; }
   }
 
-  /* Gradient text */
+  /* Gradient text — matches design images */
   .gradient-text-purple {
-    background: linear-gradient(135deg, #a855f7, #ec4899, #06b6d4);
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #22d3ee 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .gradient-text-cyan {
-    background: linear-gradient(135deg, #06b6d4, #3b82f6, #a855f7);
+    background: linear-gradient(135deg, #22d3ee, #3b82f6, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Used in footer "about your idea" */
+  .gradient-text-contact {
+    background: linear-gradient(135deg, #a855f7, #ec4899, #22d3ee);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

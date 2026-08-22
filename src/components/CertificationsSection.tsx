@@ -1,77 +1,99 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ExternalLink } from "lucide-react";
 
 export default function CertificationsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="certifications" className="py-24 px-6" ref={ref}>
+    <section id="certifications" className="pb-16 px-6" ref={ref}>
       <div className="max-w-5xl mx-auto">
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-6"
         >
-          <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "#6366f1" }}>
-            // Verified Expertise
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold font-body">
-            My{" "}
-            <span className="gradient-text-cyan">Certifications</span>
-          </h2>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#c084fc]">
+              03 // CREDENTIALS
+            </span>
+          </div>
+          <div className="flex items-end justify-between">
+            <h2 className="text-3xl md:text-4xl font-bold font-mono text-foreground tracking-tight">
+              Certifications
+            </h2>
+            <span className="font-mono text-xs text-muted-foreground hidden sm:block">
+              verified learning
+            </span>
+          </div>
         </motion.div>
 
-        <div className="flex justify-center">
-          {/* Design Thinking */}
-          <motion.a
-            href="https://drive.google.com/file/d/1E7JlWh6J-lvtzN32NXO8KL_2kAISTMKB/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="group p-6 rounded-2xl block transition-all duration-300 max-w-2xl w-full"
+        {/* Certification row */}
+        <motion.a
+          href="https://drive.google.com/file/d/1E7JlWh6J-lvtzN32NXO8KL_2kAISTMKB/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="group flex items-center gap-5 p-5 rounded-2xl transition-all duration-300"
+          style={{
+            background: "rgba(168,85,247,0.04)",
+            border: "1px solid rgba(168,85,247,0.22)",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,85,247,0.5)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(168,85,247,0.08)";
+            (e.currentTarget as HTMLElement).style.boxShadow = "0 0 25px rgba(168,85,247,0.15)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,85,247,0.22)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(168,85,247,0.04)";
+            (e.currentTarget as HTMLElement).style.boxShadow = "none";
+          }}
+        >
+          {/* Icon */}
+          <div
+            className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
             style={{
-              background: "rgba(168,85,247,0.07)",
-              border: "1px solid rgba(168,85,247,0.25)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,85,247,0.6)";
-              (e.currentTarget as HTMLElement).style.background = "rgba(168,85,247,0.12)";
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 0 24px rgba(168,85,247,0.15)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,85,247,0.25)";
-              (e.currentTarget as HTMLElement).style.background = "rgba(168,85,247,0.07)";
-              (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              background: "rgba(168,85,247,0.15)",
+              border: "1px solid rgba(168,85,247,0.35)",
+              color: "#c084fc",
             }}
           >
-            <div className="flex items-center gap-4 mb-4">
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-xl"
-                style={{ background: "rgba(168,85,247,0.2)", border: "1px solid rgba(168,85,247,0.4)" }}
-              >
-                🎨
-              </div>
-              <div>
-                <h4 className="font-body font-bold text-foreground group-hover:text-white transition-colors">
-                  Design Thinking and Innovation
-                </h4>
-                <p className="font-mono text-xs text-muted-foreground mt-0.5">IIT Bombay via Coursera</p>
-              </div>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-              Mastered human-centered design methodologies and systematic innovation frameworks
-              under the guidance of senior faculty from the School of Design.
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 3v16l7-4 7 4V3a2 2 0 00-2-2H7a2 2 0 00-2 2z"
+              />
+            </svg>
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 min-w-0">
+            <p className="font-mono font-bold text-base text-foreground group-hover:text-white transition-colors">
+              Design Thinking and Innovation
             </p>
-            <div className="flex justify-between items-center">
-              <span className="font-mono text-[10px] text-muted-foreground">ID: LTBJP78F3DON</span>
-              <span className="font-mono text-[10px]" style={{ color: "#c084fc" }}>Feb 26 - Apr 26 ↗</span>
-            </div>
-          </motion.a>
-        </div>
+            <p className="font-mono text-xs text-muted-foreground mt-1">
+              IIT Bombay via Coursera · Feb–Apr 26
+            </p>
+          </div>
+
+          {/* External link */}
+          <ExternalLink
+            className="w-5 h-5 shrink-0 text-[#c084fc] group-hover:text-purple-300 transition-colors"
+          />
+        </motion.a>
       </div>
     </section>
   );

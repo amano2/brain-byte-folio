@@ -1,44 +1,66 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "Plant Disease Detection using Leaf Images",
-    subtitle: "Final Year Project in B. Tech. — DL & Django Developer",
-    description:
-      "Engineered an automated, image-based plant disease detection system using deep learning and computer vision to enable early diagnosis and support sustainable agriculture. Employed transfer learning using pre-trained CNN architectures and MobileNetV2 to classify diseases in plant leaf images with high accuracy. Fine-tuned the models on a curated dataset (PlantVillage) containing thousands of annotated leaf images across multiple plant species and disease types.",
-    tags: ["Deep Learning", "MobileNetV2", "Django", "Computer Vision", "PlantVillage"],
-    link: "https://github.com/amano2/plant-web",
-    color: "#a855f7",
-    accentBg: "rgba(168,85,247,0.12)",
-    accent: "#c084fc",
     number: "01",
+    category: "COMPUTER VISION · 2024",
+    title: "Plant Disease Detection",
+    titleGradient: null,
+    description:
+      "An intelligent image classification platform that identifies plant diseases from leaf imagery and delivers fast, actionable guidance through a Django-powered interface.",
+    tags: ["Deep Learning", "MobileNetV2", "Django"],
+    link: "https://github.com/amano2/plant-web",
+    // Exact sampled values from Image 3
+    panelBg: "#281934",
+    panelBorder: "rgba(171,69,252,0.3)",
+    numberColor: "#fe9a00",      // Sampled #fe9a00
+    tagColor: "#fe9a00",
+    tagBorder: "rgba(254,154,0,0.25)",
+    tagText: "#fe9a00",
+    accentColor: "#ab45fc",      // Sampled #ab45fc
   },
   {
-    title: "Agentic Enterprise Copilot · Trust Layer",
-    subtitle: "Asynchronous Multi-Agent Decision Support System",
-    description:
-      "Developed a production-grade, human-in-the-loop decision support system for regulated insurance claims using an asynchronous LangGraph supervisor pattern to coordinate specialized AI agents. Features a hybrid RAG pipeline combining ChromaDB vector search with TF-IDF token matching, optimized by a Cross-Encoder re-ranker. Utilizes a dual-pass self-consistency scorer and an independent challenger auditor agent to automatically flag ambiguous cases or policy exclusions.",
-    tags: ["Python", "LangGraph", "FastAPI", "React", "ChromaDB"],
-    link: "https://github.com/amano2/agentic-copilot-trust-layer",
-    color: "#06b6d4",
-    accentBg: "rgba(6,182,212,0.12)",
-    accent: "#22d3ee",
     number: "02",
+    category: "AGENTIC SYSTEMS · 2025",
+    title: "Agentic Enterprise Copilot·",
+    titleSuffix: " Trust Layer",
+    titleSuffixColor: "#00bc7d",
+    description:
+      "A grounded enterprise copilot designed around traceable retrieval, tool orchestration, and reliable workflows for high-stakes internal knowledge.",
+    tags: ["LangGraph", "FastAPI", "React", "ChromaDB"],
+    link: "https://github.com/amano2/agentic-copilot-trust-layer",
+    // Exact sampled values from Image 3
+    panelBg: "#102820",
+    panelBorder: "rgba(0,188,125,0.3)",
+    numberColor: "#00bc7d",      // Sampled #00bc7d
+    tagColor: "#00bc7d",
+    tagBorder: "rgba(0,188,125,0.25)",
+    tagText: "#00bc7d",
+    accentColor: "#00bc7d",      // Sampled #00bc7d
   },
   {
-    title: "iTransform — GenAI Forecasting Assistant",
-    subtitle: "Retail Analytics & Glassmorphic React Dashboard",
-    description:
-      "Developed a full-stack retail analytics dashboard that competes multivariate SARIMAX against a PyTorch LSTM model on time-series sales data, facilitating live what-if discount simulations. Implemented a zero-dependency RAG architecture featuring a scikit-learn TF-IDF semantic context matcher coupled with OpenRouter LLMs. Engineered a multi-layered trust system to cross-reference generated numeric claims against a SQLite database within a ±2% tolerance.",
-    tags: ["Python", "FastAPI", "React", "PyTorch", "statsmodels", "SQLite"],
-    link: "https://github.com/amano2/GenAI-Powered-Analytics-Forecasting-Assistant",
-    color: "#ec4899",
-    accentBg: "rgba(236,72,153,0.12)",
-    accent: "#f472b6",
     number: "03",
+    category: "FORECASTING INTELLIGENCE · 2025",
+    title: "iTransform—",
+    titleSuffix: " GenAI Forecasting Assistant",
+    titleSuffixColor: "#ff2056",
+    description:
+      "A conversational forecasting workspace that pairs time-series models with GenAI explanations, helping teams explore signals, scenarios, and decisions in one place.",
+    tags: ["PyTorch", "FastAPI", "React", "statsmodels", "SQLite"],
+    link: "https://github.com/amano2/GenAI-Powered-Analytics-Forecasting-Assistant",
+    // Exact sampled values from Image 3
+    panelBg: "#31141b",
+    panelBorder: "rgba(255,32,86,0.3)",
+    numberColor: "#ff2056",      // Sampled #ff2056
+    tagColor: "#ff2056",
+    tagBorder: "rgba(255,32,86,0.25)",
+    tagText: "#ff2056",
+    accentColor: "#ff2056",      // Sampled #ff2056
   },
 ];
+
 
 export default function ProjectsSection() {
   const ref = useRef(null);
@@ -46,99 +68,129 @@ export default function ProjectsSection() {
 
   return (
     <section id="projects" className="py-24 px-6 relative" ref={ref}>
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none opacity-[0.06]"
-        style={{
-          background: "radial-gradient(circle, #a855f7, #06b6d4, transparent 70%)",
-          filter: "blur(100px)",
-        }}
-      />
-
       <div className="max-w-5xl mx-auto">
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-10"
         >
-          <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "#ec4899" }}>
-            // Featured Projects
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold font-body">
-            Case{" "}
-            <span className="gradient-text-purple">Studies</span>
-          </h2>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#22c55e]" />
+            <span className="font-mono text-xs uppercase tracking-widest text-[#22c55e]">
+              03 / Selected Work
+            </span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+            <h2 className="text-4xl md:text-5xl font-bold font-body tracking-tight text-foreground">
+              Projects<span style={{ color: "#22c55e" }}>.</span>
+            </h2>
+            <p className="text-xs text-muted-foreground font-mono max-w-[240px] text-left md:text-right leading-relaxed">
+              A collection of systems built to turn complex problems into useful experiences.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="space-y-6">
+        {/* Divider */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.15 }}
+          className="mb-6 border-t"
+          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        />
+
+        {/* Project rows */}
+        <div className="space-y-4">
           {projects.map((project, i) => (
             <motion.a
-              key={project.title}
+              key={project.number}
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: 0.15 * i }}
-              className="group block rounded-2xl overflow-hidden transition-all duration-300"
+              transition={{ duration: 0.55, delay: 0.12 * i }}
+              className="group flex flex-col md:flex-row rounded-xl overflow-hidden transition-all duration-300"
               style={{
-                background: "rgba(255,255,255,0.025)",
-                border: `1px solid rgba(255,255,255,0.06)`,
+                border: `1px solid ${project.panelBorder}`,
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = `${project.color}55`;
-                (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px ${project.color}18`;
+                (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px ${project.tagColor}20`;
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
               }}
             >
-              <div className="flex flex-col md:flex-row">
-                {/* Left colour panel */}
-                <div
-                  className="md:w-64 p-6 flex flex-col justify-between shrink-0"
-                  style={{ background: project.accentBg }}
-                >
+              {/* Left colored panel */}
+              <div
+                className="md:w-56 shrink-0 p-6 flex flex-col justify-between"
+                style={{ background: project.panelBg }}
+              >
+                {/* Number + arrow */}
+                <div className="flex items-start justify-between">
                   <span
-                    className="font-mono text-4xl font-bold opacity-30 select-none"
-                    style={{ color: project.color }}
+                    className="font-mono font-bold text-4xl leading-none"
+                    style={{ color: project.numberColor }}
                   >
                     {project.number}
                   </span>
-                  <div className="mt-6 flex flex-wrap gap-1.5">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded-full border"
-                        style={{
-                          borderColor: `${project.color}50`,
-                          color: project.accent,
-                          background: `${project.color}15`,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <ExternalLink
+                    className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity"
+                    style={{ color: project.numberColor }}
+                  />
                 </div>
 
-                {/* Right content */}
-                <div className="flex-1 p-6 flex flex-col justify-between">
-                  <div>
-                    <p className="font-mono text-xs uppercase tracking-widest mb-1" style={{ color: project.accent }}>
-                      {project.subtitle}
-                    </p>
-                    <h3 className="font-body font-bold text-xl text-foreground mb-3 group-hover:text-white transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
-                  </div>
-                  <div className="flex items-center gap-2 mt-4">
-                    <span className="text-xs font-mono" style={{ color: project.accent }}>
-                      View on GitHub ↗
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mt-6">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[9px] px-2 py-0.5 rounded"
+                      style={{
+                        background: `${project.tagColor}18`,
+                        border: `1px solid ${project.tagBorder}`,
+                        color: project.tagText,
+                      }}
+                    >
+                      {tag}
                     </span>
-                  </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right content panel */}
+              <div
+                className="flex-1 p-6 flex flex-col justify-between"
+                style={{
+                  background: "rgba(255,255,255,0.02)",
+                }}
+              >
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-3">
+                    {project.category}
+                  </p>
+                  <h3 className="font-body font-bold text-xl text-foreground mb-3 leading-snug group-hover:text-white transition-colors">
+                    {project.title}
+                    {project.titleSuffix && (
+                      <span style={{ color: project.titleSuffixColor }}>
+                        {project.titleSuffix}
+                      </span>
+                    )}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="mt-5">
+                  <span
+                    className="font-mono text-xs"
+                    style={{ color: project.accentColor }}
+                  >
+                    View case study ↗
+                  </span>
                 </div>
               </div>
             </motion.a>
