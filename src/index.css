@@ -52,6 +52,20 @@
     --sidebar-accent-foreground: 0 0% 96%;
     --sidebar-border: 220 10% 12%;
     --sidebar-ring: 147 100% 38%;
+
+    /* Terminal theme default tokens */
+    --term-bg: #0d1117;
+    --term-fg: #e5e7eb;
+    --term-prompt: #00ff66;
+    --term-path: #38bdf8;
+    --term-accent: #00ff66;
+    --term-secondary: #22d3ee;
+    --term-muted: rgba(229, 231, 235, 0.6);
+    --term-error: #f87171;
+    --term-border: #1f2937;
+    --term-header-bg: #161b22;
+    --term-cursor: #00ff66;
+    --term-code-bg: rgba(0, 255, 102, 0.05);
   }
 }
 

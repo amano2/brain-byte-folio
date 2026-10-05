@@ -1,31 +1,69 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import Blog from "./pages/Blog.tsx";
-import BlogPost from "./pages/BlogPost.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Routes, useParams, useLocation } from "react-router-dom";
+import Terminal from "./terminal/Terminal";
+import SimpleView from "./components/SimpleView";
 
-const queryClient = new QueryClient();
+function TerminalRouteWrapper() {
+  const { id } = useParams<{ id?: string }>();
+  const location = useLocation();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  const [viewMode, setViewMode] = useState<"terminal" | "simple">(() => {
+    try {
+      return (
+        (localStorage.getItem("portfolio_view_mode") as "terminal" | "simple") ||
+        "terminal"
+      );
+    } catch {
+      return "terminal";
+    }
+  });
 
-export default App;
+  const toggleViewMode = () => {
+    const next = viewMode === "terminal" ? "simple" : "terminal";
+    setViewMode(next);
+    try {
+      localStorage.setItem("portfolio_view_mode", next);
+    } catch {
+      // ignore
+    }
+  };
+
+  // Determine initial command based on deep link route
+  let initialCommand: string | undefined = undefined;
+  if (id) {
+    initialCommand = `read ${id}`;
+  } else if (location.pathname === "/blog") {
+    initialCommand = "blog";
+  } else if (location.pathname !== "/") {
+    initialCommand = `echo "404: Path '${location.pathname}' not found. Type 'help' to see available commands."`;
+  }
+
+  if (viewMode === "simple") {
+    return (
+      <SimpleView
+        onToggleTerminal={toggleViewMode}
+        selectedArticleId={id}
+      />
+    );
+  }
+
+  return (
+    <Terminal
+      onToggleSimpleView={toggleViewMode}
+      initialCommand={initialCommand}
+    />
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TerminalRouteWrapper />} />
+        <Route path="/blog" element={<TerminalRouteWrapper />} />
+        <Route path="/blog/:id" element={<TerminalRouteWrapper />} />
+        <Route path="*" element={<TerminalRouteWrapper />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
