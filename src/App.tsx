@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes, useParams, useLocation } from "react-router-dom";
 import Terminal from "./terminal/Terminal";
-import SimpleView from "./components/SimpleView";
+import RetroDesktop from "./retro/RetroDesktop";
 
 function TerminalRouteWrapper() {
   const { id } = useParams<{ id?: string }>();
   const location = useLocation();
 
-  const [viewMode, setViewMode] = useState<"terminal" | "simple">(() => {
+  const [viewMode, setViewMode] = useState<"terminal" | "retro">(() => {
     try {
-      return (
-        (localStorage.getItem("portfolio_view_mode") as "terminal" | "simple") ||
-        "terminal"
-      );
+      const stored = localStorage.getItem("portfolio_view_mode");
+      if (stored === "simple" || stored === "retro") return "retro";
+      return "terminal";
     } catch {
       return "terminal";
     }
   });
 
   const toggleViewMode = () => {
-    const next = viewMode === "terminal" ? "simple" : "terminal";
+    const next = viewMode === "terminal" ? "retro" : "terminal";
     setViewMode(next);
     try {
       localStorage.setItem("portfolio_view_mode", next);
@@ -38,9 +37,9 @@ function TerminalRouteWrapper() {
     initialCommand = `echo "404: Path '${location.pathname}' not found. Type 'help' to see available commands."`;
   }
 
-  if (viewMode === "simple") {
+  if (viewMode === "retro") {
     return (
-      <SimpleView
+      <RetroDesktop
         onToggleTerminal={toggleViewMode}
         selectedArticleId={id}
       />

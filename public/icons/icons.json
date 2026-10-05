@@ -1,0 +1,77 @@
+[
+  {
+    "name": "HotDog 1.1 (1996)",
+    "filename": "hotdog_1_1_1996.png",
+    "filepath": "/icons/hotdog_1_1_1996.png"
+  },
+  {
+    "name": "Windows 98 - Windows Explorer (16x16)",
+    "filename": "windows_98_-_windows_explorer_16x16.png",
+    "filepath": "/icons/windows_98_-_windows_explorer_16x16.png"
+  },
+  {
+    "name": "Windows 95 - Notepad (16x16)",
+    "filename": "windows_95_-_notepad_16x16.png",
+    "filepath": "/icons/windows_95_-_notepad_16x16.png"
+  },
+  {
+    "name": "Magnified - Busy",
+    "filename": "magnified_-_busy.png",
+    "filepath": "/icons/magnified_-_busy.png"
+  },
+  {
+    "name": "Magnified - Normal Select",
+    "filename": "magnified_-_normal_select.png",
+    "filepath": "/icons/magnified_-_normal_select.png"
+  },
+  {
+    "name": "Windows NT 4 - devapps.cpl, icon 216",
+    "filename": "windows_nt_4_-_devapps_cpl_icon_216.png",
+    "filepath": "/icons/windows_nt_4_-_devapps_cpl_icon_216.png"
+  },
+  {
+    "name": "Windows NT 4 - devapps.cpl, icon 217",
+    "filename": "windows_nt_4_-_devapps_cpl_icon_217.png",
+    "filepath": "/icons/windows_nt_4_-_devapps_cpl_icon_217.png"
+  },
+  {
+    "name": "Windows NT 4 - Tape Devices",
+    "filename": "windows_nt_4_-_tape_devices.png",
+    "filepath": "/icons/windows_nt_4_-_tape_devices.png"
+  },
+  {
+    "name": "3D-Bronze - Busy",
+    "filename": "3d-bronze_-_busy.png",
+    "filepath": "/icons/3d-bronze_-_busy.png"
+  },
+  {
+    "name": "3D-Bronze - Working In Background",
+    "filename": "3d-bronze_-_working_in_background.png",
+    "filepath": "/icons/3d-bronze_-_working_in_background.png"
+  },
+  {
+    "name": "Windows 95 - Error (16x16)",
+    "filename": "windows_95_-_error_16x16.png",
+    "filepath": "/icons/windows_95_-_error_16x16.png"
+  },
+  {
+    "name": "Windows 95 - Warning (16x16)",
+    "filename": "windows_95_-_warning_16x16.png",
+    "filepath": "/icons/windows_95_-_warning_16x16.png"
+  },
+  {
+    "name": "Windows 95 - Info (16x16)",
+    "filename": "windows_95_-_info_16x16.png",
+    "filepath": "/icons/windows_95_-_info_16x16.png"
+  },
+  {
+    "name": "Windows 95 - Find (16x16)",
+    "filename": "windows_95_-_find_16x16.png",
+    "filepath": "/icons/windows_95_-_find_16x16.png"
+  },
+  {
+    "name": "Windows 98 - Favorites (16x16)",
+    "filename": "windows_98_-_favorites_16x16.png",
+    "filepath": "/icons/windows_98_-_favorites_16x16.png"
+  }
+]

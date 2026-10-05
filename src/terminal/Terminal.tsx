@@ -123,10 +123,10 @@ export default function Terminal({ onToggleSimpleView, initialCommand }: Termina
                 type="button"
                 onClick={onToggleSimpleView}
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded border border-[var(--term-border)] text-[var(--term-muted)] hover:text-[var(--term-fg)] hover:border-[var(--term-secondary)] transition-all cursor-pointer"
-                title="Switch to Simple Non-Terminal View"
+                title="Switch to 90s Desktop GUI"
               >
                 <Layout className="w-3.5 h-3.5 text-[var(--term-secondary)]" />
-                <span className="hidden sm:inline">Simple View</span>
+                <span className="hidden sm:inline">Retro GUI</span>
               </button>
             )}
           </div>
