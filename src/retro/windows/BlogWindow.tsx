@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { blogs, BlogArticle } from "../../data/blogs";
-import MarkdownBlock from "../../terminal/render/MarkdownBlock"; // reuse the markdown renderer!
+import RetroMarkdownReader from "../components/RetroMarkdownReader";
 
 interface BlogWindowProps {
   initialArticleId?: string;
@@ -34,7 +34,7 @@ export default function BlogWindow({ initialArticleId }: BlogWindowProps) {
 
       <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
         {/* Sidebar: article list */}
-        <div style={{ width: "200px", borderRight: "2px ridge #c0c0c0", background: "#fdfdfd", overflowY: "auto", padding: "4px" }}>
+        <div style={{ width: "210px", borderRight: "2px ridge #c0c0c0", background: "#fdfdfd", overflowY: "auto", padding: "4px" }}>
           <div style={{ fontWeight: "bold", fontSize: "12px", padding: "4px", borderBottom: "1px solid #c0c0c0", marginBottom: "4px" }}>
             Articles ({blogs.length})
           </div>
@@ -51,31 +51,28 @@ export default function BlogWindow({ initialArticleId }: BlogWindowProps) {
                 borderBottom: "1px solid #eee",
                 display: "flex",
                 alignItems: "flex-start",
-                gap: "4px"
+                gap: "6px"
               }}
             >
-              <img src="/icons/windows98-icons/png/notepad-0.png" width="16" alt="doc" style={{ marginTop: "2px" }} />
+              <img src="/icons/windows98-icons/png/notepad-0.png" width="16" height="16" alt="doc" style={{ marginTop: "2px", flexShrink: 0, imageRendering: "pixelated" }} />
               <div>
-                <div style={{ lineHeight: "1.2" }}>{b.title}</div>
-                <div style={{ fontSize: "10px", color: activeArticle?.id === b.id ? "#c0c0c0" : "#888", marginTop: "2px" }}>{b.date}</div>
+                <div style={{ lineHeight: "1.2", fontWeight: activeArticle?.id === b.id ? "bold" : "normal" }}>{b.title}</div>
+                <div style={{ fontSize: "10px", color: activeArticle?.id === b.id ? "#c0c0c0" : "#777", marginTop: "2px" }}>{b.date}</div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Content area: article reader */}
-        <div style={{ flex: 1, padding: "16px", overflowY: "auto", fontFamily: "'Courier New', Courier, monospace", fontSize: "14px", lineHeight: "1.6" }}>
+        <div style={{ flex: 1, padding: "16px 20px", overflowY: "auto", background: "#ffffff" }}>
           {activeArticle ? (
             <div>
-              <h1 style={{ marginTop: 0, fontSize: "20px" }}>{activeArticle.title}</h1>
-              <div style={{ color: "#666", fontSize: "12px", marginBottom: "16px", paddingBottom: "8px", borderBottom: "1px dashed #c0c0c0" }}>
-                Date: {activeArticle.date} | Read time: {activeArticle.readTime}
+              <div style={{ color: "#555", fontSize: "11px", marginBottom: "12px", paddingBottom: "6px", borderBottom: "1px dashed #808080", display: "flex", justifyContent: "space-between" }}>
+                <span>Document: {activeArticle.id}.txt</span>
+                <span>Date: {activeArticle.date} | Read time: {activeArticle.readTime}</span>
               </div>
               
-              {/* Reuse our MarkdownBlock but wrap it to ensure it fits the retro style somewhat */}
-              <div className="retro-markdown-override" style={{ color: "black" }}>
-                <MarkdownBlock content={activeArticle.content} />
-              </div>
+              <RetroMarkdownReader content={activeArticle.content} />
             </div>
           ) : (
             <div style={{ color: "#666", fontStyle: "italic", textAlign: "center", marginTop: "40px" }}>
