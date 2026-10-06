@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "brain-byte-folio-1a219",
     "public": "dist",
     "ignore": [
       "firebase.json",
