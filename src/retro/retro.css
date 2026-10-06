@@ -332,9 +332,12 @@
   box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
 }
 
-.retro-tool-btn img {
+.retro-tool-btn img,
+.retro-tool-btn svg {
   width: 16px;
   height: 16px;
+  display: block;
+  flex-shrink: 0;
 }
 
 .retro-tool-divider {

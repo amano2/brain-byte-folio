@@ -1,6 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
 import { RetroWindow } from "../types";
 import { playClickSound, playAsteriskSound } from "../utils/soundEffects";
+import {
+  BackIcon,
+  ForwardIcon,
+  UpIcon,
+  CutIcon,
+  CopyIcon,
+  PasteIcon,
+  UndoIcon,
+  DeleteIcon,
+  PropertiesIcon,
+  ViewsIcon,
+} from "./ToolbarIcons";
 
 interface WindowProps {
   window: RetroWindow;
@@ -335,7 +347,7 @@ export default function Window({
           title="Back"
           onClick={() => playClickSound()}
         >
-          <img src="/icons/windows98-icons/png/arrow_left-0.png" alt="Back" />
+          <BackIcon />
           <span>Back</span>
         </button>
         <button
@@ -343,7 +355,7 @@ export default function Window({
           title="Forward"
           onClick={() => playClickSound()}
         >
-          <img src="/icons/windows98-icons/png/arrow_right-0.png" alt="Forward" />
+          <ForwardIcon />
           <span>Forward</span>
         </button>
         <button
@@ -351,7 +363,7 @@ export default function Window({
           title="Up"
           onClick={() => playClickSound()}
         >
-          <img src="/icons/windows98-icons/png/directory_up-0.png" alt="Up" />
+          <UpIcon />
           <span>Up</span>
         </button>
 
@@ -362,21 +374,38 @@ export default function Window({
           title="Cut"
           onClick={() => playClickSound()}
         >
-          <img src="/icons/windows98-icons/png/cut-0.png" alt="Cut" />
+          <CutIcon />
         </button>
         <button
           className="retro-tool-btn"
           title="Copy"
           onClick={() => playClickSound()}
         >
-          <img src="/icons/windows98-icons/png/copy-0.png" alt="Copy" />
+          <CopyIcon />
         </button>
         <button
           className="retro-tool-btn"
           title="Paste"
           onClick={() => playClickSound()}
         >
-          <img src="/icons/windows98-icons/png/paste-0.png" alt="Paste" />
+          <PasteIcon />
+        </button>
+
+        <div className="retro-tool-divider" />
+
+        <button
+          className="retro-tool-btn"
+          title="Undo"
+          onClick={() => playClickSound()}
+        >
+          <UndoIcon />
+        </button>
+        <button
+          className="retro-tool-btn"
+          title="Delete"
+          onClick={() => playClickSound()}
+        >
+          <DeleteIcon />
         </button>
 
         <div className="retro-tool-divider" />
@@ -389,8 +418,16 @@ export default function Window({
             alert(`Properties of ${window.title}\nType: Portfolio Window System\nStatus: Online`);
           }}
         >
-          <img src="/icons/windows98-icons/png/msg_information-0.png" alt="Properties" />
+          <PropertiesIcon />
           <span>Properties</span>
+        </button>
+        <button
+          className="retro-tool-btn"
+          title="Views"
+          onClick={() => playClickSound()}
+        >
+          <ViewsIcon />
+          <span>Views</span>
         </button>
       </div>
 
